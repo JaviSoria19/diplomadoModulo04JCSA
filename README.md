@@ -1,7 +1,7 @@
 # PROYECTO DIPLOMADO - MÓDULO 04
 ### 1. Clonar el proyecto
 ```bash
-git clone [URLProyecto]
+git clone https://github.com/JaviSoria19/diplomadoModulo04JCSA.git
 ```
 ### 2. Instalar dependencias
 ```bash
