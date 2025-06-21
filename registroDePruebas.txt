@@ -1,0 +1,279 @@
+//npm run dev
+
+Token admin
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwidXNlcm5hbWUiOiJhZG1pbiIsImlhdCI6MTc1MDQ0Nzg2MywiZXhwIjoxNzUwNDc2NjYzfQ.yzHfXOMHyIW9iKgGNsO3hYHdV6Kj4A4qnrN_lzD0QyA
+
+Token employee
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwidXNlcm5hbWUiOiJlbXBsb3llZSIsImlhdCI6MTc1MDQ0ODAwMSwiZXhwIjoxNzUwNDc2ODAxfQ.n81deZ0ekLwKAMjxQpoDGzNQv6zYge-Uyxv1MCW9PB4
+
+
+
+=====REGISTRO DE PRUEBAS (ORDENADO ACORDE AL DOCUMENTO DE LA PRÁCTICA).=====
+============================================================================
+============================================================================
+============================================================================
+3.1. GET http://localhost:3000/api/users ✅
+response:
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "password": "$2b$10$JIGq9gQ6Jlp0FnvK1x4Jb.Z7zAIShC.5aHjM7.0.mkvC/NrkR2Jea",
+    "status": "active",
+    "createdAt": "2025-06-20T19:27:48.883Z",
+    "updatedAt": "2025-06-20T19:27:48.883Z"
+  },
+  {
+    "id": 2,
+    "username": "employee",
+    "password": "$2b$10$dxwsHWGdI.r3TiXAQpkVJOOT7okXTm1otU9lG1skK/xvb4YtqSfGG",
+    "status": "active",
+    "createdAt": "2025-06-20T19:32:39.446Z",
+    "updatedAt": "2025-06-20T19:32:39.446Z"
+  }
+]
+============================================================================
+============================================================================
+============================================================================
+3.2.1. POST http://localhost:3000/api/users ✅
+body:
+{
+    "username" : "admin",
+    "password" : "ADMIN"
+}
+============================================================================
+============================================================================
+============================================================================
+3.2.2. POST http://localhost:3000/api/users ✅
+body:
+{
+    "username" : "employee",
+    "password" : "EMPLOYEE"
+}
+============================================================================
+============================================================================
+============================================================================
+3.3.1. POST http://localhost:3000/api/users/login ✅
+body:
+{
+    "username" : "admin",
+    "password" : "ADMIN"
+}
+============================================================================
+============================================================================
+============================================================================
+3.3.2. POST http://localhost:3000/api/users/login ✅
+body:
+{
+    "username" : "employee",
+    "password" : "EMPLOYEE"
+}
+============================================================================
+============================================================================
+============================================================================
+4.1. GET http://localhost:3000/api/users/2 ✅
+/*SI SE UTILIZA UN TOKEN VÁLIDO RETORNA:*/
+response:
+{
+  "id": 2,
+  "username": "employee",
+  "password": "$2b$10$dxwsHWGdI.r3TiXAQpkVJOOT7okXTm1otU9lG1skK/xvb4YtqSfGG",
+  "status": "active",
+  "createdAt": "2025-06-20T19:32:39.446Z",
+  "updatedAt": "2025-06-20T19:32:39.446Z"
+}
+response:
+/*CASO CONTRARIO:*/
+{
+  "message":"Token inválido o expirado"
+}
+============================================================================
+============================================================================
+============================================================================
+4.2. PUT http://localhost:3000/api/users/2 ✅
+body:
+{
+    "username" : "empleado",
+    "password" : "EMPLEADO"
+}
+response:
+1
+============================================================================
+============================================================================
+============================================================================
+4.3. PATCH http://localhost:3000/api/users/2 ✅
+body:
+{
+    "status" : "inactive"
+}
+response:
+{
+  "id": 2,
+  "username": "empleado",
+  "password": "$2b$10$IsS.QeD8xWTN6zJDEPzfFOY3k6pfVwCl4kI031N3qF7GWKQO9MgzS",
+  "status": "inactive",
+  "createdAt": "2025-06-20T19:32:39.446Z",
+  "updatedAt": "2025-06-20T20:01:49.405Z"
+}
+============================================================================
+============================================================================
+============================================================================
+4.4. DELETE http://localhost:3000/api/users/3 ✅
+response:
+1
+============================================================================
+============================================================================
+============================================================================
+4.5. GET http://localhost:3000/api/tasks ✅
+response:
+[
+  {
+    "id": 1,
+    "name": "Crear el proyecto",
+    "done": false,
+    "user_id": 2,
+    "createdAt": "2025-06-21T15:19:38.797Z",
+    "updatedAt": "2025-06-21T15:19:38.797Z"
+  },
+  {
+    "id": 2,
+    "name": "Verificar el funcionamiento de todas las API's",
+    "done": false,
+    "user_id": 2,
+    "createdAt": "2025-06-21T15:20:00.483Z",
+    "updatedAt": "2025-06-21T15:20:00.483Z"
+  }
+]
+============================================================================
+============================================================================
+============================================================================
+4.6. POST http://localhost:3000/api/tasks ✅
+body 1:
+{
+    "name" : "Crear el proyecto"
+}
+body 2:
+{
+    "name" : "Verificar el funcionamiento de todas las API's"
+}
+response 1:
+{
+    "id": 1,
+    "name": "Crear el proyecto",
+    "done": false,
+    "user_id": 2,
+    "updatedAt": "2025-06-21T15:20:00.483Z",
+    "createdAt": "2025-06-21T15:20:00.483Z"
+}
+response 2:
+{
+    "id": 2,
+    "name": "Verificar el funcionamiento de todas las API's",
+    "done": false,
+    "user_id": 2,
+    "updatedAt": "2025-06-21T15:20:00.483Z",
+    "createdAt": "2025-06-21T15:20:00.483Z"
+}
+============================================================================
+============================================================================
+============================================================================
+4.7. GET http://localhost:3000/api/tasks/2 ✅
+response:
+{
+  "id": 2,
+  "name": "Verificar el funcionamiento de todas las API's",
+  "done": false,
+  "user_id": 2,
+  "createdAt": "2025-06-21T15:20:00.483Z",
+  "updatedAt": "2025-06-21T15:20:00.483Z"
+}
+============================================================================
+============================================================================
+============================================================================
+4.8. PUT http://localhost:3000/api/tasks/2 ✅
+body:
+{
+    "name" : "Verificar el funcionamiento de las API's de Tasks"
+}
+response:
+1
+============================================================================
+============================================================================
+============================================================================
+4.9. PATCH http://localhost:3000/api/tasks/1 ✅
+body:
+{
+    "done" : true
+}
+response:
+1
+============================================================================
+============================================================================
+============================================================================
+4.10. DELETE http://localhost:3000/api/tasks/2 ✅
+response:
+1
+============================================================================
+============================================================================
+============================================================================
+4.11. GET http://localhost:3000/api/users/2/tasks ✅
+response:
+{
+  "username": "empleado",
+  "tasks": [
+    {
+      "name": "Crear el proyecto",
+      "done": true
+    },
+    {
+      "name": "Remarcar una tarea eliminada",
+      "done": false
+    },
+    {
+      "name": "Subir el proyecto a un hosting",
+      "done": false
+    },
+    {
+      "name": "Probar las API's en el hosting",
+      "done": false
+    }
+  ]
+}
+============================================================================
+============================================================================
+============================================================================
+PAGINACION
+4.12. GET http://localhost:3000/api/users/list/pagination?page=1&limit=5&search=&orderBy=id&orderDir=ASC
+response:
+{
+  "total": 6,
+  "page": 1,
+  "pages": 2,
+  "data": [
+    {
+      "id": 1,
+      "username": "admin",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "username": "empleado",
+      "status": "inactive"
+    },
+    {
+      "id": 4,
+      "username": "jsoria",
+      "status": "active"
+    },
+    {
+      "id": 5,
+      "username": "dachacespedes",
+      "status": "active"
+    },
+    {
+      "id": 6,
+      "username": "dsoriaarias",
+      "status": "active"
+    }
+  ]
+}
